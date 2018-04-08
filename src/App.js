@@ -60,6 +60,18 @@ class App extends Component {
   render() {
 
     return (
+      <div>
+    <div class="navbar-fixed">
+      <nav>
+      <div className="nav-wrapper">
+        <ul id="nav-mobile" className="right">
+          <li><a href="#">Top</a></li>
+          <li><a href="mailto:jorlee92@gmial.com">email us</a></li>
+          <li><a href="#">About</a></li>
+        </ul>
+      </div>
+    </nav>
+    </div>
       <div className ="container">
         <div className="row">
           <div className="App">
@@ -68,6 +80,7 @@ class App extends Component {
           </div>
         </div>
         </div>
+      </div>
       </div>
     );
   }

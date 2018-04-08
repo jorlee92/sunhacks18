@@ -40,7 +40,7 @@ class MusicCard extends Component {
             <span className="card-title grey-text text-darken-4">{this.props.title} <i className="material-icons right">close</i></span>
             <ul className="collection with-header">
                 <li className="collection-header"><h4>Tour Dates</h4></li>
-                <h4> <a href={this.props.url} >Buy Tickets to see { this.props.artist }</a> </h4>
+                <p> <a href={this.props.url} >Buy Tickets to see { this.props.artist }</a> </p>
             {tourDates}
             </ul>
             {/* <div className="video-container"> */}
