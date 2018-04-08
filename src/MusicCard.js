@@ -5,7 +5,8 @@ class MusicCard extends Component {
     constructor(props){
         super(props);
         this.state = { 
-            spotifyURI: ""
+            spotifyURI: "",
+            imageURL: "",
         }
     
       }
@@ -16,11 +17,12 @@ class MusicCard extends Component {
         })
         .then(response => {
             let uri = response.data.uri;
+            let imageURL = response.data.images[0].url;
             this.setState({spotifyURI: uri});
+            this.setState({imageURL: imageURL});
         })
     }
     render() {
-        let url = `${this.props.image}`
         let tourDates = this.props.dates.map((tourDate) => {
             return  (<li className="collection-item"><div>{tourDate}</div></li>)
         })
@@ -28,23 +30,25 @@ class MusicCard extends Component {
         return (
             <div className="card">
             <div className="card-image waves-effect waves-block waves-light">
-            <img className="activator" src={url} />
+            <img className="activator" src={this.state.imageURL} />
             </div>
             <div className="card-content">
             <span className="card-title activator grey-text text-darken-4">{ this.props.title }<i className="material-icons right">more_vert</i></span>
-            <p><a href="#">This is a link</a></p>
+            <p><a href="#">Details</a></p>
             </div>
             <div className="card-reveal">
             <span className="card-title grey-text text-darken-4">{this.props.title} <i className="material-icons right">close</i></span>
             <ul className="collection with-header">
                 <li className="collection-header"><h4>Tour Dates</h4></li>
-                <h3> <a href={this.props.url} >Buy Tickets to see { this.props.artist }</a> </h3>
+                <p> <a href={this.props.url} >Buy Tickets to see { this.props.artist }</a> </p>
             {tourDates}
             </ul>
+            {/* <div className="video-container"> */}
             <iframe src={spotifyURL} 
-                width="300" height="380" frameorder="0" allowtransparency="true" 
+                width="100%" height="100%" frameorder="0" allowtransparency="true" 
                 allow="encrypted-media"></iframe>
             </div>
+            {/* </div> */}
         </div>
                     
     )
