@@ -25,12 +25,13 @@ class App extends Component {
     let tours = {};
     Axios.get(`http://localhost:3001/proxy/${lat}/${long}`)
     .then(json => {
+      console.log(json);
       json.data.forEach(event => {
         if(!tours[event.name]){
           tours[event.name] = [];
         }
         tours[event.name].push({"date": event.dates.start.localDate,
-        "image": event.images[1].url, "artist": event._embedded.attractions[0].name
+        "image": event.images[1].url, "artist": event._embedded.attractions[0].name, "url": event.url
       });
         
       });
@@ -59,8 +60,14 @@ class App extends Component {
   render() {
 
     return (
-      <div className="App">
-       { this.state.musicCards }
+      <div className ="container">
+        <div className="row">
+          <div className="App">
+          <div className="col s10 offset-s1">
+          { this.state.musicCards }
+          </div>
+        </div>
+        </div>
       </div>
     );
   }
